@@ -1,11 +1,11 @@
-﻿using Snake.Model;
-using System;
+using Snake.Model;
+using System;  // импортирует пространство имен System, которое содержит основные типы и классы .NET Framework.
 
 namespace Snake
 {
     public class InputControl
     {
-        public Direction? GetCurrentDirection(ConsoleKey key)
+        public Direction? GetCurrentDirection(ConsoleKey key) // обьявление перечисления для установки клавиш управления змейкой
         {
             switch (key)
             {
