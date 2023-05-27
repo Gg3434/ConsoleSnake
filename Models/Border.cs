@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
+using System.Collections.Generic; // импортирует пространство имен  которое содержит обобщенные типы и интерфейсы, такие как List<T>
+using System.Linq; 
 
 namespace Snake.Model
 {
@@ -37,7 +37,7 @@ namespace Snake.Model
             return border;
         }
 
-        private HashSet<Position> DrawObstacle(int width, int height, int obstacleData) 
+        private HashSet<Position> DrawObstacle(int width, int height, int obstacleData) // метод который принимает ширину и высоту и номер сложности препятствия
                                                                                         
         {
             HashSet<Position> obstacle = new(); // создание пустого множества которое будет содержать препятствие
@@ -77,7 +77,7 @@ namespace Snake.Model
             return obstacle;
         }
 
-        public List<Position> GetPositions()
+        public List<Position> GetPositions() // метод получения позиции
         {
             return BorderPositions.ToList(); // возвращает список позиций границы для отображения на экране. 
         }
