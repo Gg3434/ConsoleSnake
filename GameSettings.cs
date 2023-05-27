@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;  // импортирует пространство имен System, которое содержит основные типы и классы .NET Framework.
+using System.Collections.Generic; // импортирует пространство имен  которое содержит обобщенные типы и интерфейсы, такие как List<T>
+using System.Linq; // импортируется пространство имен System.Linq, которое содержит расширения LINQ  для работы с коллекциями и запросами.
+using System.Text; // импортируется пространство имен System.Text, которое содержит классы для работы с различными кодировками и символами.
+using System.Threading.Tasks;  // импортируется пространство имен System.Threading.Tasks, которое содержит классы для работы с асинхронными операциями и параллельным выполнением кода.
 
 namespace Snake
 {
     public class GameSettings
     {
-        public int mapSize { get; set; }
-        public int speedSnake { get; set; }
-        public string Difficulty { get; set; }
-        public int Size { get; set; }
+        public int mapSize { get; set; } // обьявление свойства размер карты
+        public int speedSnake { get; set; } //обьявление свойства скорость змейки
+        public string Difficulty { get; set; } // обьявление свойства сложности игры
+        public int Size { get; set; } 
         public GameSettings() { }
-        public void  ChoiceDifficulty()
+        public void  ChoiceDifficulty() // метод который вызывает меню выбора сложности
         {
             Canvas.DrawCenteredString(("Меню игры"));
             Console.WriteLine("\nВыберите размер карты:");
@@ -31,7 +31,7 @@ namespace Snake
             speedSnake = GetValidInput();
             
         }
-        public int GetValidInput()
+        public int GetValidInput() // метод который проверяет валидно ли значения выбранной сложности игроком
         {
             int val;
             do
