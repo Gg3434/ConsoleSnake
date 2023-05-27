@@ -1,20 +1,17 @@
-﻿using Snake.Model;
-using System;
+using Snake.Model; // импортирует пространство имен Snake.Model, чтобы использовать классы из этого пространства имен в текущем файле.
+using System; // импортирует пространство имен System, которое содержит основные типы и классы .NET Framework.
 
 namespace Snake
 {
     public class Canvas
     {
-        private const char EmptyPixel = ' ';
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        private const char EmptyPixel = ' '; // пустой пиксель
+        public int Width { get; private set; } // ширина 
+        public int Height { get; private set; } // высота
 
-        public Canvas() : this(30, 30) { }
-        public Canvas(int width, int height)
+        public Canvas(int width, int height) // конструктор принимает ширину и высоту поля для отрисовки
         {
-           
-
-            Console.Clear(); 
+            Console.Clear(); // очищение консоли
             Console.SetWindowSize(width, height); // установка размера консоли
             Console.SetBufferSize(width, height); // установка размера буфера
             Console.CursorVisible = false;  // чтобы не было мигающего курсора на консоли(делает курсор невидимым)
@@ -50,7 +47,7 @@ namespace Snake
             Console.SetCursorPosition(position.X, position.Y);
             Console.Write(EmptyPixel);
         }
-        public static void DrawCenteredString(string text)
+        public static void DrawCenteredString(string text) // Статический метод предназначенный для вывода текста в консоли по принимаемым кординатам
         {
             int y = Console.WindowHeight / 2;
             int x = (Console.WindowWidth - text.Length) / 2;
