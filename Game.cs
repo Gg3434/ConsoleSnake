@@ -1,29 +1,24 @@
-﻿using Snake.Model;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.IO;
-using Snake;
+using Snake.Model; // импортирует пространство имен Snake.Model, чтобы использовать классы из этого пространства имен в текущем файле.
+using System; // импортирует пространство имен System, которое содержит основные типы и классы .NET Framework.
+using System.Collections.Generic; // импортирует пространство имен  которое содержит обобщенные типы и интерфейсы, такие как List<T>
+using System.Threading; // импортирует пространство имен System.Threading, которое содержит типы для работы с многопоточностью и синхронизацией.
+using System.IO; // импортирует пространство имен System.IO, которое содержит типы, предназначенные для чтения и записи данных из файлов и потоков.
+using Snake; // импортирует пространство имен Snake, чтобы использовать классы из этого пространства имен в текущем файле.
 
 namespace Snake
 { 
-    using Snake;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading;
-
+   
     public class Game
     {
-        public InputControl InputControl { get; private set; }
-        public Canvas Canvas { get; private set; }
-        public Field Field { get; private set; }
+        public InputControl InputControl { get; private set; } // обьявление свойства управления
+        public Canvas Canvas { get; private set; } // обьявление свойства отрисовки
+        public Field Field { get; private set; } // обьявление свойства игрового поля
 
-        private int _timeBetweenFrames;
-        private bool _isFinished;
-        private Leaderboard _leaderboard;
-        private readonly string _leaderboardFilePath = "leaderboard.txt";
-       // private int _scorePanelWidth = 15;
+        private int _timeBetweenFrames; // переменная время обновления кадра
+        private bool _isFinished; 
+        private Leaderboard _leaderboard; // обьявление обьекта типа Leaderboard
+        private readonly string _leaderboardFilePath = "leaderboard.txt"; 
+       
         public Game()
         {
             var gameSettings = new GameSettings();
@@ -32,7 +27,7 @@ namespace Snake
             Init();
         }
 
-        public void Init()
+        public void Init() // метод который  запускает игровое меню с выбором сложности
         {
             InputControl = new InputControl();
             switch (GameState.Settings.mapSize)
@@ -65,18 +60,18 @@ namespace Snake
                     break;
             }
 
-            _isFinished = false;
+            _isFinished = false; 
 
             _leaderboard = new Leaderboard(_leaderboardFilePath);
-            Field.OnSnakeDeath += LevelFinished;
-            Field.OnSnakeEat += DrawNewFood;
+            Field.OnSnakeDeath += LevelFinished; // сррабатывает событие когда змейка умирает
+            Field.OnSnakeEat += DrawNewFood; // срабатывает событие когда змейка ест еду
 
         }
-        private void DrawNewFood()
+        private void DrawNewFood() // метод который спавнит новую еду
         {
-            Canvas.DrawObject(Field.Food);
+           Canvas.DrawObject(Field.Food);
         }
-        private void DrawBombs()
+        private void DrawBombs() // метод который спавнит новую бомбу
         {
 
             for (int i = 0; i < Field.Bombs.Count; i++)
@@ -85,7 +80,7 @@ namespace Snake
             }
 
         }
-        private void LevelFinished()
+        private void LevelFinished() // метод который вызывается после смерти змейки и выводит сообщение о законченой игре
         {
             _isFinished = true;
             Console.Clear();
@@ -104,7 +99,7 @@ namespace Snake
             Restart();
         }
 
-        private void DisplayLeaderboard()
+        private void DisplayLeaderboard() // метод который выводит таблицу лидеров на консоль 
         {
             Console.WriteLine("Список лидеров\n");
             var records = _leaderboard.GetRecords();
@@ -127,7 +122,7 @@ namespace Snake
             Console.WriteLine();
         }
 
-        public void Run()
+        public void Run() // метод который срабатывание при запуске игры 
         {
 
             Console.Clear();
@@ -165,7 +160,7 @@ namespace Snake
             Restart();
         }
 
-        private void AdjustConsoleWindowSize()
+        private void AdjustConsoleWindowSize() // метод который обновляет размер консоли
         {
             int desiredWidth = Canvas.Width;
             int desiredHeight = Canvas.Height + 1; // Увеличение высоты консоли для отображения информации о счете
@@ -181,7 +176,7 @@ namespace Snake
             }
         }
 
-        public void Restart()
+        public void Restart() // метод который перезапускает игру
         {
             GameState.Reset();
             Console.WriteLine("Press any key to restart the game.");
