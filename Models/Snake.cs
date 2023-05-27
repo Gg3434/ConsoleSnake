@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
+using System.Collections.Generic; // импортирует пространство имен  которое содержит обобщенные типы и интерфейсы, такие как List<T>
+using System.Linq;  // импортируется пространство имен System.Linq, которое содержит расширения LINQ  для работы с коллекциями и запросами.
 
 namespace Snake.Model
 {
